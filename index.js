@@ -1,7 +1,7 @@
 
 $(document).ready(() => {
   const $body = $('body');
-  $body.html('');
+  $body.html(''); //clear the body (.html('')clears whatever tag)
 
   const $tweets = streams.home.map((tweet) => {
     const $tweet = $('<div></div>');
