@@ -16,7 +16,7 @@ $(document).ready(() => {
     'color': 'white',               
     'padding': '20px',              
     'text-align': 'center',         
-    'font-size': '28px',            
+    'font-size': '28px',           
     'font-weight': 'bold',          
     'border-radius': '5px',         
     'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.1)'
