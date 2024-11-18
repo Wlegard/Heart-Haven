@@ -12,7 +12,7 @@ $(document).ready(() => {
   
   const $header = $('<header class="page-header">Heart Haven </header>');
   $header.css({
-    'background-color': 'violet',  
+    'background-color': 'violet', 
     'color': 'white',               
     'padding': '20px',              
     'text-align': 'center',         
@@ -49,31 +49,31 @@ $(document).ready(() => {
 
   function createFallingHeart() {
     const $heart = $('<div class="falling-heart">❤️</div>');
-    const startPositionX = Math.random() * $body.width(); // Random horizontal position
-    const duration = Math.random() * 5000 + 3000; // Random duration for falling animation
+    const startPositionX = Math.random() * $body.width(); 
+    const duration = Math.random() * 5000 + 3000; 
 
-    // Set initial position and styling
+    
     $heart.css({
       'position': 'absolute',
       'left': startPositionX,
-      'top': -50, // Start above the screen
+      'top': -50, 
       'font-size': '30px',
       'z-index': '1000',
-      'pointer-events': 'none', // Prevent hearts from interacting with other elements
+      'pointer-events': 'none', 
     });
 
     $body.append($heart);
 
-    // Animate the heart falling
+    
     $heart.animate({
-      'top': $body.height() + 50, // Move it out of the screen
+      'top': $body.height() + 50, 
     }, duration, 'linear', function() {
-      // After animation ends, remove the heart
+      
       $(this).remove();
     });
   }
 
-  // Continuously create new falling hearts every 500ms
+  
   setInterval(createFallingHeart, 1000);
 
 
