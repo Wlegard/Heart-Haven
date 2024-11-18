@@ -2,6 +2,14 @@
 $(document).ready(() => {
   const $body = $('body');
   $body.html(''); //clear the body (.html('')clears whatever tag)
+  
+  
+
+
+
+
+
+  
   const $header = $('<header class="page-header">Heart Haven </header>');
   $header.css({
     'background-color': 'violet',  
@@ -26,13 +34,6 @@ $(document).ready(() => {
      
   });
 
- 
-  $body.css({
-    'background-color': 'pink',  
-    'font-family': 'Arial, sans-serif',  
-    'margin': '0',
-    'padding': '0'
-  });
   
 
   
@@ -45,6 +46,40 @@ $(document).ready(() => {
   const $tweetInput = $('<input type="text" id="tweetInput" placeholder="Tweet Here" />'); 
   const $tweetButton = $('<button id="tweetButton">Tweet</button>'); 
   
+
+  function createFallingHeart() {
+    const $heart = $('<div class="falling-heart">❤️</div>');
+    const startPositionX = Math.random() * $body.width(); // Random horizontal position
+    const duration = Math.random() * 5000 + 3000; // Random duration for falling animation
+
+    // Set initial position and styling
+    $heart.css({
+      'position': 'absolute',
+      'left': startPositionX,
+      'top': -50, // Start above the screen
+      'font-size': '30px',
+      'z-index': '1000',
+      'pointer-events': 'none', // Prevent hearts from interacting with other elements
+    });
+
+    $body.append($heart);
+
+    // Animate the heart falling
+    $heart.animate({
+      'top': $body.height() + 50, // Move it out of the screen
+    }, duration, 'linear', function() {
+      // After animation ends, remove the heart
+      $(this).remove();
+    });
+  }
+
+  // Continuously create new falling hearts every 500ms
+  setInterval(createFallingHeart, 1000);
+
+
+
+
+
 
   $backButton.css({
     'padding': '10px',
@@ -73,18 +108,7 @@ $(document).ready(() => {
     'cursor': 'pointer',
     'border-radius': '5px'
   });
-  const $image2 = $('<img src="http://www.pixelstalk.net/wp-content/uploads/2014/12/Field-of-Tulip-flowers-Background.jpg" alt="Profile Picture" class="profile-image" />');
-  $image2.css({
-    'display': 'block',
-    'margin': '0 auto',
-    'border-radius': '50%',
-    'max-width': '200px',
-    'max-height': '200px',
-    'margin-top': '50px',
-    'margin-bottom': '50px',
-  });
-  $body.append($image);
-
+  
   
   $body.css({
     'background-color': 'pink',
@@ -92,78 +116,22 @@ $(document).ready(() => {
     'margin': '0',
     'padding': '0',
     'position': 'relative', 
-    'overflow': 'hidden', 
+    'overflow': 'auto', 
   });
 
   
-  const createFallingHeart = () => {
-    const heart = $('<div class="falling-heart">❤️</div>');
-    const leftPosition = Math.random() * 100; 
-    const delay = Math.random() * 2; 
-    const duration = Math.random() * (5 - 3) + 3; 
 
-    heart.css({
-      'position': 'absolute',
-      'top': '-50px', 
-      'left': `${leftPosition}%`,
-      'font-size': '30px',
-      'color': 'red',
-      'opacity': 0.8,
-      'animation': `fall ${duration}s linear ${delay}s infinite, blink 1s linear ${delay}s infinite`,
-    });
-
-    $body.append(heart);
-
-    setTimeout(() => heart.remove(), duration * 1000);
-  };
-
-  const style = `
-    @keyframes fall {
-      0% {
-        top: -50px;
-        opacity: 1;
-      }
-      100% {
-        top: 100vh;
-        opacity: 0;
-      }
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 0.8;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0.8;
-      }
-    }
-
-    .falling-heart {
-      content: '❤️';
-      font-size: 30px;
-      color: red;
-      position: absolute;
-      opacity: 0.8;
-    }
-  `;
-
-  // Append the styles to the document head
-  $('head').append(`<style>${style}</style>`);
-
-  
-  setInterval(createFallingHeart, 300); 
 
 
   
 
-  $body.append($tweetHolder);  // tsweetholder add at the end of the body
+  $body.append($tweetHolder);
+  $body.prepend($backButton);
+  $body.prepend($tweetInput);
+
+  // tsweetholder add at the end of the body
  $body.prepend($tweetButton);
- $body.prepend($tweetInput);
 
- $body.prepend($backButton);
 
   $body.prepend($image)
     $body.prepend($header);  
@@ -171,8 +139,7 @@ $(document).ready(() => {
   let currentTimeline = 'home';
   window.visitor = 'currentUser'; 
 
-
-
+  
 
   const timeStamp = function(time){
   
@@ -281,7 +248,4 @@ $('#tweetButton').click(writeTweet);
   },3000);
 
   
-
-
-
-});
+})
