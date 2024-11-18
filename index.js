@@ -14,7 +14,7 @@ $(document).ready(() => {
     'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.1)'
   });
 
-  const $image = $('<img src="http://www.pixelstalk.net/wp-content/uploads/2014/12/Field-of-Tulip-flowers-Background.jpg" alt="Profile Picture" class="profile-image" />'); 
+  const $image = $('<img src="https://cdn.vectorstock.com/i/1000v/97/08/beating-heart-background-vector-919708.jpg" alt="Profile Picture" class="profile-image" />'); 
   $image.css({
     'display': 'block',        
     'margin': '0 auto',        
