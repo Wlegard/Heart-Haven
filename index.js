@@ -91,16 +91,16 @@ $(document).ready(() => {
     'font-family': 'Arial, sans-serif',
     'margin': '0',
     'padding': '0',
-    'position': 'relative', // This is required for positioning hearts
+    'position': 'relative', 
     'overflow': 'hidden', 
   });
 
-  // Falling Hearts Animation
+  
   const createFallingHeart = () => {
     const heart = $('<div class="falling-heart">❤️</div>');
-    const leftPosition = Math.random() * 100; // Random position from left (0% to 100%)
-    const delay = Math.random() * 2; // Random delay for falling
-    const duration = Math.random() * (5 - 3) + 3; // Random duration for falling
+    const leftPosition = Math.random() * 100; 
+    const delay = Math.random() * 2; 
+    const duration = Math.random() * (5 - 3) + 3; 
 
     heart.css({
       'position': 'absolute',
@@ -153,8 +153,8 @@ $(document).ready(() => {
   // Append the styles to the document head
   $('head').append(`<style>${style}</style>`);
 
-  // Trigger the falling hearts periodically
-  setInterval(createFallingHeart, 300); // Create a new heart every 300ms
+  
+  setInterval(createFallingHeart, 300); 
 
 
   
@@ -176,7 +176,7 @@ $(document).ready(() => {
 
   const timeStamp = function(time){
   
-    const dateTime = moment(time).format('MMMM DD, YYYY h:mm a'); // e.g., "2 minutes ago"
+    const dateTime = moment(time).format('MMMM DD, YYYY h:mm a'); 
     const relativeTime = moment(time).fromNow()
 
     return    { dateTime, relativeTime };
