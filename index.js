@@ -2,7 +2,7 @@
 $(document).ready(() => {
   const $body = $('body');
   $body.html(''); //clear the body (.html('')clears whatever tag)
-  const $header = $('<header class="page-header">Twiddler</header>');
+  const $header = $('<header class="page-header">Heart Haven </header>');
   $header.css({
     'background-color': 'violet',  
     'color': 'white',               
