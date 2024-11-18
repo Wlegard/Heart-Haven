@@ -14,7 +14,6 @@ $(document).ready(() => {
     'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.1)'
   });
 
-  $body.append($header);  
   const $image = $('<img src="http://www.pixelstalk.net/wp-content/uploads/2014/12/Field-of-Tulip-flowers-Background.jpg" alt="Profile Picture" class="profile-image" />'); 
   $image.css({
     'display': 'block',        
@@ -27,7 +26,6 @@ $(document).ready(() => {
      
   });
 
-  $body.append($image)
  
   $body.css({
     'background-color': 'pink',  
@@ -35,6 +33,12 @@ $(document).ready(() => {
     'margin': '0',
     'padding': '0'
   });
+  
+
+  
+  
+  
+
   
   const $tweetHolder = $('<div class="tweets-holder"></div>'); 
   const $backButton = $('<button class="back-button">Back to Home</button>');
@@ -69,12 +73,100 @@ $(document).ready(() => {
     'cursor': 'pointer',
     'border-radius': '5px'
   });
+  const $image2 = $('<img src="http://www.pixelstalk.net/wp-content/uploads/2014/12/Field-of-Tulip-flowers-Background.jpg" alt="Profile Picture" class="profile-image" />');
+  $image2.css({
+    'display': 'block',
+    'margin': '0 auto',
+    'border-radius': '50%',
+    'max-width': '200px',
+    'max-height': '200px',
+    'margin-top': '50px',
+    'margin-bottom': '50px',
+  });
+  $body.append($image);
 
+  
+  $body.css({
+    'background-color': 'pink',
+    'font-family': 'Arial, sans-serif',
+    'margin': '0',
+    'padding': '0',
+    'position': 'relative', // This is required for positioning hearts
+    'overflow': 'hidden', 
+  });
+
+  // Falling Hearts Animation
+  const createFallingHeart = () => {
+    const heart = $('<div class="falling-heart">❤️</div>');
+    const leftPosition = Math.random() * 100; // Random position from left (0% to 100%)
+    const delay = Math.random() * 2; // Random delay for falling
+    const duration = Math.random() * (5 - 3) + 3; // Random duration for falling
+
+    heart.css({
+      'position': 'absolute',
+      'top': '-50px', 
+      'left': `${leftPosition}%`,
+      'font-size': '30px',
+      'color': 'red',
+      'opacity': 0.8,
+      'animation': `fall ${duration}s linear ${delay}s infinite, blink 1s linear ${delay}s infinite`,
+    });
+
+    $body.append(heart);
+
+    setTimeout(() => heart.remove(), duration * 1000);
+  };
+
+  const style = `
+    @keyframes fall {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      100% {
+        top: 100vh;
+        opacity: 0;
+      }
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.8;
+      }
+    }
+
+    .falling-heart {
+      content: '❤️';
+      font-size: 30px;
+      color: red;
+      position: absolute;
+      opacity: 0.8;
+    }
+  `;
+
+  // Append the styles to the document head
+  $('head').append(`<style>${style}</style>`);
+
+  // Trigger the falling hearts periodically
+  setInterval(createFallingHeart, 300); // Create a new heart every 300ms
+
+
+  
 
   $body.append($tweetHolder);  // tsweetholder add at the end of the body
-  $body.prepend($backButton);
+ $body.prepend($tweetButton);
  $body.prepend($tweetInput);
-  $body.prepend($tweetButton);
+
+ $body.prepend($backButton);
+
+  $body.prepend($image)
+    $body.prepend($header);  
 
   let currentTimeline = 'home';
   window.visitor = 'currentUser'; 
