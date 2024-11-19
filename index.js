@@ -159,8 +159,7 @@ $(document).ready(() => {
   //then those tweets will show up on the page
   function addNewTweets() {
     $tweetHolder.html(''); 
-    const tweets = currentTimeline === 'home' ? streams.home : streams[currentTimeline];
-
+    const tweets = currentTimeline === 'home' ? streams.home : streams.users[currentTimeline] 
      tweets.forEach((tweet) => {
       const $tweet = $('<div class="tweet"></div>'); // set class to "tweet"
       // seperate the user from the message in the tweet (the username should be in it'sown tag)
